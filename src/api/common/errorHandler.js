@@ -1,6 +1,4 @@
 const _ = require('lodash')
-const nodeRestful = require('node-restful')
-const { response } = require('../../config/server')
 
 module.exports = (req, res, next) => {
     const bundle = res.locals.bundle
@@ -16,5 +14,5 @@ module.exports = (req, res, next) => {
 const parseErrors = (nodeRestfulErrors) => {
     const errors = []
     _.forIn(nodeRestfulErrors, error => errors.push(error.message))
-    return errors
+    return errors 
 }
