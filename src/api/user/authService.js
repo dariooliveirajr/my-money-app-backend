@@ -5,7 +5,7 @@ const User = require('./user')
 const env = require('../../.env')
 
 const emailRegex = /\S+@\S+\.\S+/
-const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/
+const passwordRegex = /(?=.*[a-z])/
 
 const sendErrorsFromDB = (res, dbErrors) => {
     const errors = []
@@ -53,7 +53,7 @@ const signup = (req, res, next) => {
     if (!password.match(passwordRegex)) {
         return res.status(400).send({
             errors: [
-                "Senha precisar ter: uma letra maiúscula, uma letra minúscula, um número, uma caractere especial(@#$ %) e tamanho entre 6-20."
+                "Insira ao menos um caractere minúsculo na senha!"
             ]
         })
     }
